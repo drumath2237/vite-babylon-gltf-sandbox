@@ -9,5 +9,8 @@
   "devDependencies": {
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^4.2.0"
   }
 }
