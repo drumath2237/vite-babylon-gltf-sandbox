@@ -1,8 +1,20 @@
+import * as BABYLON from '@babylonjs/core';
+
 import './style.css';
 
-const app = document.querySelector<HTMLDivElement>('#app')!;
+const renderCanvas = <HTMLCanvasElement>document.getElementById('renderCanvas');
 
-app.innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`;
+const main = (canvas: HTMLCanvasElement) => {
+  const engine = new BABYLON.Engine(canvas, true);
+  const scene = new BABYLON.Scene(engine);
+
+  scene.createDefaultCameraOrLight(true, true, true);
+  scene.createDefaultEnvironment();
+  BABYLON.MeshBuilder.CreateBox('box', {}, scene);
+
+  engine.runRenderLoop(() => {
+    scene.render();
+  });
+};
+
+main(renderCanvas);
